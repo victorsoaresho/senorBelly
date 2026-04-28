@@ -1,5 +1,5 @@
 from flask import Blueprint, request, jsonify
-from models.user import User
+from app.models.user import User
 
 user_bp = Blueprint("user_controller", __name__, url_prefix="/users")
 
@@ -10,10 +10,10 @@ _current_id = 1
 def _is_invalid_user_data(data):
     """
     Verifica se os dados fornecidos para criar/atualizar um usuário são inválidos ou incompletos.
-    
+
     Args:
         data (dict): Dicionário contendo os dados do usuário.
-        
+
     Returns:
         bool: True se os dados forem inválidos, False caso contrário.
     """
@@ -28,10 +28,10 @@ def _is_invalid_user_data(data):
 def _serialize_user(user: User):
     """
     Converte uma entidade User em um dicionário serializável em JSON, ocultando a senha.
-    
+
     Args:
         user (User): Objeto do tipo User.
-        
+
     Returns:
         dict: Representação em dicionário do usuário.
     """
@@ -47,7 +47,7 @@ def _serialize_user(user: User):
 def create_user():
     """
     Cria um novo usuário na aplicação.
-    
+
     Recebe um JSON com name, email e password. Retorna o usuário criado com status 201.
     """
     global _current_id
@@ -80,7 +80,7 @@ def get_users():
 def get_user(user_id):
     """
     Busca e retorna um usuário específico pelo seu ID.
-    
+
     Args:
         user_id (int): O ID do usuário a ser buscado.
     """
@@ -94,7 +94,7 @@ def get_user(user_id):
 def update_user(user_id):
     """
     Atualiza as informações de um usuário existente.
-    
+
     Args:
         user_id (int): O ID do usuário a ser atualizado.
     """
@@ -117,7 +117,7 @@ def update_user(user_id):
 def delete_user(user_id):
     """
     Remove um usuário do sistema pelo seu ID.
-    
+
     Args:
         user_id (int): O ID do usuário a ser deletado.
     """

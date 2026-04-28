@@ -7,6 +7,7 @@ class Debt:
     """
     Entidade que representa uma dívida (Debt) associada a um usuário.
     """
+
     id: int
     user_id: int
     name: str

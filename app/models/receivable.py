@@ -7,6 +7,7 @@ class Receivable:
     """
     Entidade que representa um recebível (Receivable) associado a um usuário.
     """
+
     id: int
     user_id: int
     name: str

@@ -1,8 +1,8 @@
 from flask import Flask, jsonify
 
-from controllers.user_controller import user_bp
-from controllers.debt_controller import debt_bp
-from controllers.receivable_controller import receivable_bp
+from app.controllers.user_controller import user_bp
+from app.controllers.debt_controller import debt_bp
+from app.controllers.receivable_controller import receivable_bp
 
 app = Flask(__name__)
 
@@ -15,7 +15,7 @@ app.register_blueprint(receivable_bp)
 def home():
     """
     Rota inicial de teste da API.
-    
+
     Retorna uma mensagem de boas-vindas para confirmar que a API está rodando.
     """
     return jsonify({"message": "Bem-vindo à API do SenorBelly!"})

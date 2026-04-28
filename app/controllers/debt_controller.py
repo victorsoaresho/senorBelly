@@ -1,5 +1,5 @@
 from flask import Blueprint, request, jsonify
-from models.debt import Debt
+from app.models.debt import Debt
 from datetime import datetime
 
 debt_bp = Blueprint("debt_controller", __name__, url_prefix="/debts")
@@ -11,10 +11,10 @@ _current_id = 1
 def _is_invalid_debt_data(data):
     """
     Verifica se os dados fornecidos para criar uma dívida são inválidos ou incompletos.
-    
+
     Args:
         data (dict): Dicionário contendo os dados da dívida.
-        
+
     Returns:
         bool: True se os dados forem inválidos, False caso contrário.
     """
@@ -30,10 +30,10 @@ def _is_invalid_debt_data(data):
 def _serialize_debt(debt: Debt):
     """
     Converte uma entidade Debt em um dicionário serializável em JSON, formatando a data de vencimento.
-    
+
     Args:
         debt (Debt): Objeto do tipo Debt.
-        
+
     Returns:
         dict: Representação em dicionário da dívida.
     """
@@ -51,7 +51,7 @@ def _serialize_debt(debt: Debt):
 def create_debt():
     """
     Cria uma nova dívida na aplicação.
-    
+
     Recebe um JSON contendo user_id, name, value e maturity_date.
     """
     global _current_id
@@ -90,7 +90,7 @@ def get_debts():
 def get_debt(debt_id):
     """
     Busca e retorna uma dívida específica pelo seu ID.
-    
+
     Args:
         debt_id (int): O ID da dívida a ser buscada.
     """
@@ -104,7 +104,7 @@ def get_debt(debt_id):
 def update_debt(debt_id):
     """
     Atualiza as informações de uma dívida existente (ex: marcar como paga, mudar valor).
-    
+
     Args:
         debt_id (int): O ID da dívida a ser atualizada.
     """
@@ -134,7 +134,7 @@ def update_debt(debt_id):
 def delete_debt(debt_id):
     """
     Remove uma dívida do sistema pelo seu ID.
-    
+
     Args:
         debt_id (int): O ID da dívida a ser deletada.
     """

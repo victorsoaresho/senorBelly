@@ -1,5 +1,5 @@
 from flask import Blueprint, request, jsonify
-from models.receivable import Receivable
+from app.models.receivable import Receivable
 from datetime import datetime
 
 receivable_bp = Blueprint("receivable_controller", __name__, url_prefix="/receivables")
@@ -11,10 +11,10 @@ _current_id = 1
 def _is_invalid_receivable_data(data):
     """
     Verifica se os dados fornecidos para criar um recebível são inválidos ou incompletos.
-    
+
     Args:
         data (dict): Dicionário contendo os dados do recebível.
-        
+
     Returns:
         bool: True se os dados forem inválidos, False caso contrário.
     """
@@ -30,10 +30,10 @@ def _is_invalid_receivable_data(data):
 def _serialize_receivable(receivable: Receivable):
     """
     Converte uma entidade Receivable em um dicionário serializável em JSON, formatando a data de recebimento.
-    
+
     Args:
         receivable (Receivable): Objeto do tipo Receivable.
-        
+
     Returns:
         dict: Representação em dicionário do recebível.
     """
@@ -51,7 +51,7 @@ def _serialize_receivable(receivable: Receivable):
 def create_receivable():
     """
     Cria um novo recebível na aplicação.
-    
+
     Recebe um JSON contendo user_id, name, value e due_date.
     """
     global _current_id
@@ -90,7 +90,7 @@ def get_receivables():
 def get_receivable(receivable_id):
     """
     Busca e retorna um recebível específico pelo seu ID.
-    
+
     Args:
         receivable_id (int): O ID do recebível a ser buscado.
     """
@@ -104,7 +104,7 @@ def get_receivable(receivable_id):
 def update_receivable(receivable_id):
     """
     Atualiza as informações de um recebível existente (ex: marcar como recebido, mudar valor).
-    
+
     Args:
         receivable_id (int): O ID do recebível a ser atualizado.
     """
@@ -132,7 +132,7 @@ def update_receivable(receivable_id):
 def delete_receivable(receivable_id):
     """
     Remove um recebível do sistema pelo seu ID.
-    
+
     Args:
         receivable_id (int): O ID do recebível a ser deletado.
     """

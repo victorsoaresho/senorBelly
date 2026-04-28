@@ -6,6 +6,7 @@ class User:
     """
     Entidade que representa um usuário no sistema.
     """
+
     id: int
     name: str
     email: str
@@ -22,7 +23,7 @@ class User:
     def update_balance(self, amount: float) -> None:
         """
         Atualiza o saldo do usuário com o valor fornecido.
-        
+
         Args:
             amount (float): O valor a ser adicionado (pode ser negativo para subtrair).
         """
